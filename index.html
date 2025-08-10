@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frontend</title>
+</head>
+<body>
+  <h1>Frontend Page</h1>
+  <button id="getMessage">Get Message from Backend</button>
+  <p id="output"></p>
+
+  <script>
+    document.getElementById('getMessage').addEventListener('click', () => {
+      fetch('http://localhost:5000/api/message')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('output').textContent = data.message;
+        })
+        .catch(err => console.error(err));
+    });
+  </script>
+</body>
+</html>
